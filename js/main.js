@@ -1,4 +1,3 @@
-
 // Cotizador Constructor
 //constructor para seguro
 
@@ -38,30 +37,20 @@ class Seguro {
             Si el seguro es sin grúa se multiplica por 30% mas
             Si el seguro es con grúa 50% mas
         */
-       if(this.tipo === 'sin grúa') {
-           cantidad *= 1.30;
-       }else {
-           cantidad *= 1.50;
-       }
-       console.log ("El precio del seguro a contratar es de $ ", cantidad)
-       return cantidad;
-        
-    
-    }
+       //--------------->ACÁ UTILIZO OPTIMIZACIÓN DE CÓDIGO <---------------
+    this.tipo === 'sin grúa'? (cantidad *= 1.30) (cantidad *= 1.50) : console.log ("El precio del seguro a contratar es de $ ", cantidad)
+    return cantidad;
+}
 }
 
 // Todo lo que se muestra
 class Interfaz{
-
+  
     // mensaje que se imprime en el html
     mostrarMensaje(mensaje, tipo) {
         const div = document.createElement('div');
-    
-        if(tipo == 'error') {
-            div.classList.add('mensaje', 'error');
-        } else {
-            div.classList.add('mensaje', 'correcto')
-        }
+          //--------------->ACÁ UTILIZO OPTIMIZACIÓN DE CÓDIGO <---------------
+        tipo == 'error' ? div.classList.add('mensaje', 'error') : div.classList.add('mensaje', 'correcto');
         div.innerHTML = `${mensaje}`;
         formulario.insertBefore(div, document.querySelector('.form-group'))
     
@@ -133,6 +122,7 @@ formulario.addEventListener('submit', function(e) {
     // crear instancia de interfaz
     const interfaz = new Interfaz();
 
+  //--------------->ACÁ UTILIZO OPTIMIZACIÓN DE CÓDIGO (ACCESO CONDICIONAL A UN OBJETO)<---------------
     // Revisamos que los campos esten vacios
     if(vehiculoSeleccionado === '' || anioSeleccionado === '' || tipo === '' ){
         //Interfaz imprimiendo un error
